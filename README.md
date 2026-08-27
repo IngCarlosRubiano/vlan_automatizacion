@@ -1,51 +1,60 @@
-# Automatizador de Configuración de VLANs
+# 🌐 Automatizador de Configuración de VLANs (PoC)
 
-Aplicación de escritorio en Python que automatiza la generación y el despliegue de configuraciones de VLAN en equipos Cisco, probada en entornos simulados con **GNS3**. Reduce el trabajo manual de configurar VLANs una por una a través de la CLI.
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Prueba%20de%20Concepto-blue)
+![Año](https://img.shields.io/badge/Año-2024-ff69b4)
 
-## Contexto
+Aplicación de escritorio en Python que automatiza la generación y el despliegue de configuraciones de VLAN en equipos Cisco, probada en entornos simulados con **GNS3**. Reduce significativamente el trabajo manual y mitiga el error humano al configurar VLANs a través de la CLI.
 
-Desarrollado como proyecto para la asignatura de Planificación y Diseño de Redes. El objetivo era demostrar automatización de tareas de red repetitivas mediante scripting en Python, priorizando la funcionalidad de punta a punta sobre el pulido de la interfaz.
+## 🚀 Propósito del proyecto
+Diseñado como una Prueba de Concepto (PoC) para demostrar la viabilidad de la automatización de tareas de red mediante scripting en Python. El proyecto prioriza la lógica de integración de red, la validación estricta de datos y la ejecución segura de comandos remotos.
 
-## Características
+## ✨ Características
+- **Gestión centralizada:** Interfaz gráfica de escritorio (Tkinter) para gestionar VLANs sin comandos manuales.
+- **Conexión configurable:** Acceso por **SSH** (Paramiko) o **Telnet** (telnetlib), con host, usuario, puerto y timeout ajustables.
+- **Validación de red:** Prueba de conexión independiente y validación de subred en formato CIDR (cálculo automático del gateway).
+- **Despliegue automatizado:** Generación de comandos Cisco IOS (configuración tipo *router-on-a-stick*).
+- **Ejecución y Monitoreo:** Configuración sobre el dispositivo vía SSH/Telnet con log de salida en tiempo real.
+- **Modos Offline/Demo:** Exportación a script de texto y simulación de ejecución completa sin conexión a equipos reales.
+- **Persistencia:** Guardado de configuraciones en JSON (`vlan_configs.json`).
 
-- Interfaz gráfica de escritorio (Tkinter) para gestionar VLANs sin escribir comandos manualmente.
-- Conexión configurable por **SSH** (Paramiko) o **Telnet** (telnetlib), con host, usuario, puerto y timeout ajustables.
-- Prueba de conexión independiente antes de ejecutar cambios sobre el equipo.
-- Alta y eliminación de VLANs con validación de ID (1-4094) y de subred en formato CIDR, con cálculo automático del gateway.
-- Generación automática de comandos Cisco IOS (configuración tipo *router-on-a-stick*: subinterfaces con encapsulación dot1Q).
-- Ejecución real de la configuración sobre el dispositivo vía SSH o Telnet, con log de salida en tiempo real.
-- Exportación de los comandos generados a un archivo de script de texto, sin necesidad de conexión.
-- Modo demo que simula la ejecución completa sin conectarse a un equipo real (útil para presentaciones).
-- Persistencia de configuraciones guardadas en JSON (`vlan_configs.json`), con opciones de guardar, cargar, eliminar y exportar.
+## 🖥️ Captura de pantalla
+*(Próximamente)*
 
-## Requisitos
-
+## 📋 Requisitos
 - Python 3.x
 - [paramiko](https://pypi.org/project/paramiko/)
 
-> Nota: el módulo `telnetlib` de la librería estándar fue removido en Python 3.13. Si usas una versión reciente de Python, la conexión por Telnet puede requerir una librería alternativa (por ejemplo `telnetlib3`).
+> ⚠️ **Nota técnica:** El módulo `telnetlib` de la librería estándar fue removido en Python 3.13. Si usas una versión reciente de Python, la conexión por Telnet requerirá una alternativa como `telnetlib3`.
 
-## Instalación y uso
-
+## ⚙️ Instalación y uso
 ```bash
-git clone https://github.com/IngCarlosRubiano/vlan_automation.git
-cd vlan_automation
+git clone [https://github.com/IngCarlosRubiano/vlan_automatizacion.git](https://github.com/IngCarlosRubiano/vlan_automatizacion.git)
+cd vlan_automatizacion
 pip install paramiko
-python vlan_automation.py
-```
+python vlan_automation.py`
+``` 
 
-## Uso recomendado
+## 🛠️ Uso recomendado
+Configura la conexión (IP, usuario, contraseña, protocolo y puerto) en la sección superior.
 
-1. Configura la conexión (IP, usuario, contraseña, protocolo y puerto) en la sección superior.
-2. Usa **Probar Conexión** para verificar el acceso antes de aplicar cambios.
-3. Agrega las VLANs necesarias (ID, nombre y subred) en la tabla.
-4. Usa **Modo Demo** para simular la ejecución sin tocar un equipo real, o **Ejecutar Automatización** para aplicar la configuración de verdad.
-5. Opcionalmente, usa **Generar Script** para exportar los comandos a un archivo de texto sin conectarte a nada.
+Usa Probar Conexión para verificar el acceso antes de aplicar cambios.
 
-## Nota técnica
+Agrega las VLANs necesarias (ID, nombre y subred) en la tabla.
 
-Por defecto, el script genera configuración para **routers** (subinterfaces). El código incluye una ruta alterna para configuración de **switches** (VLANs + SVI), actualmente desactivada en `generate_cisco_commands()`.
+Usa Modo Demo para simular la ejecución, o Ejecutar Automatización para aplicar la configuración.
 
-## Autor
+## 👤 Autor
+# Carlos Rubiano
 
-Carlos Rubiano — [GitHub](https://github.com/IngCarlosRubiano) | [LinkedIn](https://www.linkedin.com/in/carlos-rubiano14/)
+<p>
+<a href="https://github.com/IngCarlosRubiano/IngCarlosRubiano" target="_blank">
+<img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/>
+</a>
+<a href="https://www.linkedin.com/in/carlos-rubiano-engineer/" target="_blank">
+<img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/>
+</a>
+</p>
+
+
+⭐ Si este proyecto te fue útil, no olvides dejar una estrella.
